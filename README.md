@@ -1,3 +1,3 @@
 recent-tab
 ==========
-Safari extension to navigate recent tab
+Navigate to last active tab with "Option + Tab"
