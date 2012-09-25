@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<script>
+var tabsHistory = [];
+var message = 0; 
+
+//safari.application.addEventListener("open", openHandler, true);
+safari.application.addEventListener("close", closeHandler, true);
+safari.application.addEventListener("activate", activateHandler, true);
+safari.application.addEventListener("message", messageHandler, true);
+
+function openHandler(event)
+{
+    //alert('open');
+    // Open events are sent for both windows and tabs. When a tab is opened, keep track of it in
+    // the list of unread tabs until it has been read (activated) or closed.
+    //if (event.target instanceof SafariBrowserTab)
+    //    tabsHistory.push(event.target);
+}
+
+function messageHandler(event)
+{
+    tabsHistory[tabsHistory.length - 1 - event.message].activate();
+}
+
+function closeHandler(event)
+{
+    // Close events are sent for both windows and tabs.
+    if (event.target instanceof SafariBrowserTab) {
+        removeFromHistory(event.target);
+    tabsHistory[tabsHistory.length - 1].activate();
+    }
+}
+
+function activateHandler(event)
+{
+    // Activate events are sent for both windows and tabs.
+    if (event.target instanceof SafariBrowserTab) {
+        removeFromHistory(event.target);
+        addToHistory(event.target);
+    }
+}
+
+function addToHistory(tab)
+{
+    if (tabsHistory[tabsHistory.length] != tab) {
+        tabsHistory.push(tab);
+    }
+}
+
+function removeFromHistory(tab)
+{
+    var index = tabsHistory.indexOf(tab);
+    if (index === -1)
+        return;
+    tabsHistory.splice(index, 1);
+}
+
+
+function debug() {
+    var q = '> ';
+    for (var i in tabsHistory) {
+        q += '[' + i + ']=' + tabsHistory[i].url + '; \n';
+    }
+    alert(q);
+}
+
+</script>

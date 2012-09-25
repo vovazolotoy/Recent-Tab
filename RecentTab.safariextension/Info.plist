@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Vladimir Zolotoy</string>
+	<string>Vladimir Zolotoy (vovazolotoy@gmail.com)</string>
 	<key>Builder Version</key>
 	<string>8536.26.14</string>
 	<key>CFBundleDisplayName</key>
@@ -13,24 +13,39 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>Chrome</key>
-	<dict/>
+	<dict>
+		<key>Global Page</key>
+		<string>recenttab.html</string>
+	</dict>
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
-		<dict/>
+		<dict>
+			<key>Start</key>
+			<array>
+				<string>recenttab.js</string>
+			</array>
+		</dict>
 	</dict>
 	<key>Description</key>
-	<string>Extension to navigate to last tab with "Option + Tab"</string>
+	<string>Navigate to last active tab with "Option + Tab"</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
 	<dict>
 		<key>Website Access</key>
-		<dict/>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
 	</dict>
+	<key>Website</key>
+	<string>https://github.com/vovazolotoy/recent-tab</string>
 </dict>
 </plist>
